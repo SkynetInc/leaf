@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons right>
+      <button ion-button icon-only *ngIf="!editing" color="dark" (click)="showOptionsMock()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-buttons left clear>
+      <button ion-button clear icon-left large color="dark" class="title">
+        <ion-icon name="leaf" color="primary"></ion-icon>
+        Leaf
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>35 Second Bitcoin</ion-card-header>
+
+    <ion-list>
+      <ion-list-header>Ask Price</ion-list-header>
+      <ion-item>
+        <ion-icon large item-start [name]="getIcon(deltaAsk)" [color]="getColor(deltaAsk)"></ion-icon>
+        <h2>{{rounder(ask, 2)}}</h2>
+        <p>{{ deltaAsk | number:'1.2-2' }}%</p>
+      </ion-item>
+    </ion-list>
+    <ion-list padding-top>
+      <ion-list-header>Bid Price</ion-list-header>
+      <ion-item>
+        <ion-icon large item-start [name]="getIcon(deltaBid)" [color]="getColor(deltaBid)"></ion-icon>
+        <h2>{{rounder(bid, 2)}}</h2>
+        <p>{{ deltaBid | number:'1.2-2' }}%</p>
+      </ion-item>
+    </ion-list>
+    <ion-list padding-top>
+      <ion-list-header>Spot Price</ion-list-header>
+      <ion-item>
+        <ion-icon large item-start [name]="getIcon(deltaSpot)" [color]="getColor(deltaSpot)"></ion-icon>
+        <h2>{{rounder(spot, 2)}}</h2>
+        <p>{{ deltaSpot | number:'1.2-2' }}%</p>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-list padding>
+    <ion-item>
+      <ion-label stacked>Alert me when price</ion-label>
+      <ion-input type="number" placeholder="7123.85" required minlength="4" [(ngModel)]="myAlert"></ion-input>
+    </ion-item>
+    <!-- <ion-item *ngIf="alertPrice.errors.minlength" class="alert alert-danger">
+
+          <p>Price must be at least 4 digits like: 7123.85</p>
+    </ion-item> -->
+    <button ion-button margin-left (click)="setAlert(myAlert)">Set Alert</button>
+  </ion-list>
+
+  <ion-list padding *ngIf="hasAlerts">
+    <ion-list-header>Your Alerts</ion-list-header>
+    <ion-item *ngFor="let alert of myAlerts; let i = index" (click)="deleteAlert(i)">
+      <ion-icon item-start name="close-circle" color="primary"></ion-icon>
+      <h2>{{alert}}</h2>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

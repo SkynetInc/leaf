@@ -1,0 +1,10 @@
+page-home {
+  ion-item > ion-icon {
+    opacity: 0.3;
+  }
+  .title {
+    font-size: 3rem;
+    opacity: 1.0 !important;
+    text-transform: none !important;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "leaf",
+  "app_id": "Leaf",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://api.cointree.com.au/v1/price/btc/aud"
+    }
+  ]
+}
