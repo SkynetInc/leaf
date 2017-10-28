@@ -52,10 +52,6 @@
       <ion-label stacked>Alert me when price</ion-label>
       <ion-input type="number" placeholder="7123.85" required minlength="4" [(ngModel)]="myAlert"></ion-input>
     </ion-item>
-    <!-- <ion-item *ngIf="alertPrice.errors.minlength" class="alert alert-danger">
-
-          <p>Price must be at least 4 digits like: 7123.85</p>
-    </ion-item> -->
     <button ion-button margin-left (click)="setAlert(myAlert)">Set Alert</button>
   </ion-list>
 

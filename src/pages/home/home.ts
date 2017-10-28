@@ -28,16 +28,11 @@ export class HomePage {
     public navCtrl: NavController,
     public priceService: PriceServiceProvider,
     public alertCtrl: AlertController) {
-
       this.loadPrice();
       this.updatePrice();
-
     }
 
-  ngOnInit(): void {
-
-  }
-
+  ngOnInit(): void {}
 
   loadPrice() {
     this.priceService.load()
@@ -46,7 +41,6 @@ export class HomePage {
       this.ask = this.newPrice.ask;
       this.bid = this.newPrice.bid;
       this.spot = this.newPrice.spot;
-      console.log('price: ', this.newPrice)
     });
   }
 
@@ -54,7 +48,6 @@ export class HomePage {
     Observable.interval(35000).subscribe(x => {
       this.priceService.load()
       .then(data => {
-        console.log(data)
         this.newPrice = data;
         if(this.oldPrice.ask && this.oldPrice.ask != this.newPrice.ask) {
           this.deltaAsk = ((this.newPrice.ask - this.oldPrice.ask) / this.oldPrice.ask) * 100;
@@ -69,12 +62,6 @@ export class HomePage {
         this.ask = this.newPrice.ask;
         this.bid = this.newPrice.bid;
         this.spot = this.newPrice.spot;
-
-        console.log('price: ', this.newPrice)
-        console.log('delta ask: ', this.deltaAsk);
-        console.log('delta bid: ', this.deltaBid);
-        console.log('delta spot: ', this.deltaSpot);
-
       });
 
       this.oldPrice = this.newPrice;
@@ -91,19 +78,15 @@ export class HomePage {
   }
 
   setAlert(myAlert) {
-    console.log("alert: ", myAlert);
     if(myAlert.length > 3){
       this.myAlerts.push(myAlert);
       this.hasAlerts = true;
     }
   }
 
-  focusAlert(event) {
-    console.log("focus alert: ", event);
-  }
+  focusAlert(event) {}
 
   deleteAlert(index) {
-    console.log("delete alert: ", index);
     this.myAlerts.splice(index, 1);
     if(this.myAlerts.length == 0){
       this.hasAlerts = false;
