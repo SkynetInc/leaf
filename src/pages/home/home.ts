@@ -123,4 +123,13 @@ export class HomePage {
     alert.present();
   }
 
+  showMoreOptions(price) {
+    let alert = this.alertCtrl.create({
+      title: 'Hi Shane',
+      message: "Thanks for reviewing this test code!",
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
 }
